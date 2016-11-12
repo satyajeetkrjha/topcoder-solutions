@@ -1,0 +1,22 @@
+# depslib dependency file v1.0
+1474293737 source:f:\c++ programs\srm441div1500redundant\main.cpp
+	<vector>
+	<list>
+	<map>
+	<set>
+	<deque>
+	<stack>
+	<bitset>
+	<algorithm>
+	<functional>
+	<numeric>
+	<utility>
+	<sstream>
+	<iostream>
+	<iomanip>
+	<cstdio>
+	<cmath>
+	<cstdlib>
+	<ctime>
+	<bits/stdc++.h>
+

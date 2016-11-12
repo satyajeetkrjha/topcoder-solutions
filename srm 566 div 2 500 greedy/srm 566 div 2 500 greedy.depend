@@ -1,0 +1,21 @@
+# depslib dependency file v1.0
+1468828132 source:f:\c++ programs\srm 566 div 2 500 greedy\main.cpp
+	<vector>
+	<list>
+	<map>
+	<set>
+	<deque>
+	<stack>
+	<bitset>
+	<algorithm>
+	<functional>
+	<numeric>
+	<utility>
+	<sstream>
+	<iostream>
+	<iomanip>
+	<cstdio>
+	<cmath>
+	<cstdlib>
+	<ctime>
+

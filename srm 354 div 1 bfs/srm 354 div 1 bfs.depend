@@ -1,0 +1,22 @@
+# depslib dependency file v1.0
+1470233783 source:f:\c++ programs\srm 354 div 1 bfs\main.cpp
+	<vector>
+	<list>
+	<map>
+	<set>
+	<deque>
+	<stack>
+	<bitset>
+	<algorithm>
+	<functional>
+	<numeric>
+	<utility>
+	<sstream>
+	<iostream>
+	<iomanip>
+	<cstdio>
+	<cmath>
+	<cstdlib>
+	<ctime>
+	<bits/stdc++.h>
+
