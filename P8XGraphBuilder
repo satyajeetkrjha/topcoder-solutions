@@ -1,0 +1,45 @@
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+#include <bits/stdc++.h>
+using namespace std;
+
+class P8XGraphBuilder {
+public:
+	int solve(vector <int>);
+};
+int dp[200][200];
+int P8XGraphBuilder::solve(vector <int> scores) {
+	memset(dp,-1,sizeof(dp));
+	dp[0][0]=0;
+int n=scores.size();
+// we partition into n+1 
+for(int i=0;i<=n;i++){
+	for(int j=0;j<=2*n;j++){
+		if(dp[i][j]!=-1){
+			for(int k=1;k<=n && j+k<=2*n;k++){
+				dp[i+1][j+k]=max(dp[i+1][j+k],dp[i][j]+scores[k-1]);
+			}
+		
+		}
+	}
+	
+}
+return dp[n+1][2*n];
+	
+}
