@@ -1,0 +1,61 @@
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+#include <bits/stdc++.h>
+using namespace std;
+
+class SmilesTheFriendshipUnicorn {
+public:
+	string hasFriendshipChain(int, vector <int>, vector <int>);
+};
+vector <int> adj[2005];
+bool visited[2005];
+bool flag;
+void dfs(int u,int depth){
+	
+
+		visited[u]=true;
+			if(depth==5) {
+		flag=true;
+		return;
+	}
+		
+		for(int i=0;i<adj[u].size();i++){
+			int v=adj[u][i];
+			if(visited[v]==true) continue;
+			else
+			dfs(v,depth+1);
+		}
+		visited[u]=false;
+	}
+
+string SmilesTheFriendshipUnicorn::hasFriendshipChain(int N, vector <int> A, vector <int> B) {
+     int sz=A.size();
+	for(int i=0;i<sz;i++ ){
+		adj[A[i]].push_back(B[i]);
+		adj[B[i]].push_back(A[i]);
+	}
+	memset(visited,false,sizeof(visited));
+for(int i=0;i<N && flag==false;i++){
+dfs(i,1);
+}
+if(flag==true)
+return "Yay!";
+else
+return ":(";	
+}
