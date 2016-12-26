@@ -1,0 +1,46 @@
+//https://community.topcoder.com/stat?c=problem_statement&pm=10241&rd=13759
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+class SequenceSums {
+public:
+	vector <int> sequence(int, int);
+};
+
+vector <int> SequenceSums::sequence(int N, int L) {
+	vector <int> v;
+		v.clear();
+	while(L<=100){
+	
+		int first=(N-(L*(L-1))/2);
+		int num=first;
+		if(num%L==0 && num/L>=0){
+			for(int j=0;j<L;j++){
+				v.push_back(num/L+j);
+			}
+		
+			break;
+		}
+		L++;
+	}
+		return v;
+	
+}
