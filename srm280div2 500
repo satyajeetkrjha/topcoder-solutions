@@ -1,0 +1,46 @@
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+class CompletingBrackets {
+public:
+	string complete(string);
+};
+
+string CompletingBrackets::complete(string text) {
+int right=0;int left =0;
+
+for(int i=0;i<text.size();i++){
+	if(text[i]=='[')
+	right++;
+	else{
+		if(right>0) right--;
+		else
+		left++;
+	}
+}
+for(int i=0;i<left;i++)
+text='['+text;	
+
+for(int i=0;i<right;i++){
+	text+=']';
+}
+return text;
+}
