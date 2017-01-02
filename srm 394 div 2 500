@@ -1,0 +1,234 @@
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+#include <bits/stdc++.h>
+using namespace std;
+
+class RoughStrings {
+public:
+	int minRoughness(string, int);
+};
+
+int RoughStrings::minRoughness(string s, int n) {
+	int c[30];
+	memset(c,0,sizeof(c));
+	for(int i=0;i<s.size();i++){
+		c[s[i]-'a']++;
+	}
+	/*for(int i=0;i<26;i++){
+		cout<<c[i]<<endl;
+	}*/
+int ret=1000000;
+for(int low=0;low<=50;low++){
+	for(int high=low;high<=50;high++){
+		int discard=0;
+		for(int k=0;k<26;k++){
+			if(c[k]<low){
+				discard+=c[k];
+			}
+			else{
+				if(c[k]>high)
+				discard+=c[k]-high;
+			}
+		}
+			if(discard<=n){
+			ret=min(ret,(high-low));
+			//cout<<"ret is "<<ret<<endl;
+		}
+	}
+}
+return ret;		
+}
+
+
+
+//<%:testing-code%>
+//Powered by [KawigiEdit] 2.0!
+//<%:start-tests%>
+double test0() {
+	string p0 = "aaaaabbc";
+	int p1 = 1;
+	RoughStrings * obj = new RoughStrings();
+	clock_t start = clock();
+	int my_answer = obj->minRoughness(p0, p1);
+	clock_t end = clock();
+	delete obj;
+	cout <<"Time: " <<(double)(end-start)/CLOCKS_PER_SEC <<" seconds" <<endl;
+	int p2 = 3;
+	cout <<"Desired answer: " <<endl;
+	cout <<"\t" << p2 <<endl;
+	cout <<"Your answer: " <<endl;
+	cout <<"\t" << my_answer <<endl;
+	if (p2 != my_answer) {
+		cout <<"DOESN'T MATCH!!!!" <<endl <<endl;
+		return -1;
+	}
+	else {
+		cout <<"Match :-)" <<endl <<endl;
+		return (double)(end-start)/CLOCKS_PER_SEC;
+	}
+}
+double test1() {
+	string p0 = "aaaabbbbc";
+	int p1 = 5;
+	RoughStrings * obj = new RoughStrings();
+	clock_t start = clock();
+	int my_answer = obj->minRoughness(p0, p1);
+	clock_t end = clock();
+	delete obj;
+	cout <<"Time: " <<(double)(end-start)/CLOCKS_PER_SEC <<" seconds" <<endl;
+	int p2 = 0;
+	cout <<"Desired answer: " <<endl;
+	cout <<"\t" << p2 <<endl;
+	cout <<"Your answer: " <<endl;
+	cout <<"\t" << my_answer <<endl;
+	if (p2 != my_answer) {
+		cout <<"DOESN'T MATCH!!!!" <<endl <<endl;
+		return -1;
+	}
+	else {
+		cout <<"Match :-)" <<endl <<endl;
+		return (double)(end-start)/CLOCKS_PER_SEC;
+	}
+}
+double test2() {
+	string p0 = "veryeviltestcase";
+	int p1 = 1;
+	RoughStrings * obj = new RoughStrings();
+	clock_t start = clock();
+	int my_answer = obj->minRoughness(p0, p1);
+	clock_t end = clock();
+	delete obj;
+	cout <<"Time: " <<(double)(end-start)/CLOCKS_PER_SEC <<" seconds" <<endl;
+	int p2 = 2;
+	cout <<"Desired answer: " <<endl;
+	cout <<"\t" << p2 <<endl;
+	cout <<"Your answer: " <<endl;
+	cout <<"\t" << my_answer <<endl;
+	if (p2 != my_answer) {
+		cout <<"DOESN'T MATCH!!!!" <<endl <<endl;
+		return -1;
+	}
+	else {
+		cout <<"Match :-)" <<endl <<endl;
+		return (double)(end-start)/CLOCKS_PER_SEC;
+	}
+}
+double test3() {
+	string p0 = "gggggggooooooodddddddllllllluuuuuuuccckkk";
+	int p1 = 5;
+	RoughStrings * obj = new RoughStrings();
+	clock_t start = clock();
+	int my_answer = obj->minRoughness(p0, p1);
+	clock_t end = clock();
+	delete obj;
+	cout <<"Time: " <<(double)(end-start)/CLOCKS_PER_SEC <<" seconds" <<endl;
+	int p2 = 3;
+	cout <<"Desired answer: " <<endl;
+	cout <<"\t" << p2 <<endl;
+	cout <<"Your answer: " <<endl;
+	cout <<"\t" << my_answer <<endl;
+	if (p2 != my_answer) {
+		cout <<"DOESN'T MATCH!!!!" <<endl <<endl;
+		return -1;
+	}
+	else {
+		cout <<"Match :-)" <<endl <<endl;
+		return (double)(end-start)/CLOCKS_PER_SEC;
+	}
+}
+double test4() {
+	string p0 = "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz";
+	int p1 = 17;
+	RoughStrings * obj = new RoughStrings();
+	clock_t start = clock();
+	int my_answer = obj->minRoughness(p0, p1);
+	clock_t end = clock();
+	delete obj;
+	cout <<"Time: " <<(double)(end-start)/CLOCKS_PER_SEC <<" seconds" <<endl;
+	int p2 = 0;
+	cout <<"Desired answer: " <<endl;
+	cout <<"\t" << p2 <<endl;
+	cout <<"Your answer: " <<endl;
+	cout <<"\t" << my_answer <<endl;
+	if (p2 != my_answer) {
+		cout <<"DOESN'T MATCH!!!!" <<endl <<endl;
+		return -1;
+	}
+	else {
+		cout <<"Match :-)" <<endl <<endl;
+		return (double)(end-start)/CLOCKS_PER_SEC;
+	}
+}
+double test5() {
+	string p0 = "bbbccca";
+	int p1 = 2;
+	RoughStrings * obj = new RoughStrings();
+	clock_t start = clock();
+	int my_answer = obj->minRoughness(p0, p1);
+	clock_t end = clock();
+	delete obj;
+	cout <<"Time: " <<(double)(end-start)/CLOCKS_PER_SEC <<" seconds" <<endl;
+	int p2 = 0;
+	cout <<"Desired answer: " <<endl;
+	cout <<"\t" << p2 <<endl;
+	cout <<"Your answer: " <<endl;
+	cout <<"\t" << my_answer <<endl;
+	if (p2 != my_answer) {
+		cout <<"DOESN'T MATCH!!!!" <<endl <<endl;
+		return -1;
+	}
+	else {
+		cout <<"Match :-)" <<endl <<endl;
+		return (double)(end-start)/CLOCKS_PER_SEC;
+	}
+}
+//<%:end-tests%>
+int main() {
+	int time;
+	bool errors = false;
+	
+	time = test0();
+	if (time < 0)
+		errors = true;
+	
+	time = test1();
+	if (time < 0)
+		errors = true;
+	
+	time = test2();
+	if (time < 0)
+		errors = true;
+	
+	time = test3();
+	if (time < 0)
+		errors = true;
+	
+	time = test4();
+	if (time < 0)
+		errors = true;
+	
+	time = test5();
+	if (time < 0)
+		errors = true;
+	
+	if (!errors)
+		cout <<"You're a stud (at least on the example cases)!" <<endl;
+	else
+		cout <<"Some of the test cases had errors." <<endl;
+}
