@@ -1,0 +1,45 @@
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+class TwoRectangles {
+public:
+	string describeIntersection(vector <int>, vector <int>);
+};
+
+string TwoRectangles::describeIntersection(vector <int> A, vector <int> B) {
+	int x1=A[0];int y1=A[1];
+	int x2=A[2];int y2=A[3];
+	int x3=B[0];int y3=B[1];
+	int x4=B[2];int y4=B[3];
+	int diff1=(min(x2,x4)-max(x1,x3));
+	int diff2=(min(y2,y4)-max(y1,y3));
+	//cout<<"diff1"<<diff1<<" diff2" <<diff2<<endl;
+	if(diff1<0||  diff2<0)
+	return "none";
+	if(diff1>=1 && diff2>=1)
+	return "rectangle";
+	if(diff1==0 && diff2==0)
+	return "point";
+	return "segment";
+}
+
+//<%:testing-code%>
+//Powered by [KawigiEdit] 2.0!
