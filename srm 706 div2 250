@@ -1,0 +1,45 @@
+#include <vector> 
+#include <list> 
+#include <map> 
+#include <set> 
+#include <deque> 
+#include <stack> 
+#include <bitset> 
+#include <algorithm> 
+#include <functional> 
+#include <numeric> 
+#include <utility> 
+#include <sstream> 
+#include <iostream> 
+#include <iomanip> 
+#include <cstdio> 
+#include <cmath> 
+#include <cstdlib> 
+#include <ctime> 
+
+using namespace std; 
+
+class ThreeIncreasing { 
+public: 
+  int minEaten(int, int, int); 
+}; 
+
+int ThreeIncreasing::minEaten(int a, int b, int c) { 
+    int sum=0; 
+  if(c>b && b>a) return 0; 
+  else{ 
+    if(b>=c){ 
+      sum+=(b-c)+1; 
+      b-=(b-c+1); 
+      if(b==0 || b<0) 
+      return -1; 
+    } 
+    if(a>=b){ 
+      sum+=(a-b)+1; 
+      a-=a-b+1; 
+      if(a==0|| a<0) 
+      return -1; 
+    } 
+    return sum; 
+  } 
+}
