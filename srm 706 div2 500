@@ -1,0 +1,45 @@
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+class SellingFruits {
+public:
+	int maxDays(int, int, int, int);
+};
+
+int SellingFruits::maxDays(int x, int f, int d, int p) {
+	int ans=0;
+	
+	 //unsigned long long int mul=f*x;
+if(f>d/x){
+int val1=d/x;
+cout<<"val is "<<val1<<endl;
+int val2=f;;
+return min(val1,val2);
+}
+else{
+	d=d-x*f;// money left
+   ans=d/(p+x);
+	
+	}
+	
+
+return ans+f;
+}
