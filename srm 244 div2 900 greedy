@@ -1,0 +1,35 @@
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+class CircleDance {
+public:
+	int arrangeDancers(vector <int>);
+};
+
+int CircleDance::arrangeDancers(vector <int> heights) {
+	sort(heights.begin(),heights.end());
+	int ans=-100000;
+	for(int i=2;i<heights.size();i++){
+		ans=max(heights[i]-heights[i-2],ans);
+	}
+	return ans;
+}
+//<%:start-tests%>
