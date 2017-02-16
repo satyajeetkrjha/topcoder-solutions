@@ -1,0 +1,142 @@
+#include <vector>
+#include <list>
+#include <map>
+#include <set>
+#include <deque>
+#include <stack>
+#include <bitset>
+#include <algorithm>
+#include <functional>
+#include <numeric>
+#include <utility>
+#include <sstream>
+#include <iostream>
+#include <iomanip>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
+#include <bits/stdc++.h>
+using namespace std;
+
+class OldBridges {
+public:
+	string isPossible(vector <string>, int, int, int, int, int, int);
+};
+int g[1005][1000];
+int rg[1000][1000];
+const int infinite=200;
+int parent[12345];
+  bool visited[12345];
+  typedef long long int ll;
+int  n;
+int S,T;
+int an_;int bn_;
+bool bfs( int s, int t)
+{
+    // Create a visited array and mark all vertices as not visited
+  
+    memset(visited, 0, sizeof(visited));
+ 
+    // Create a queue, enqueue source vertex and mark source vertex
+    // as visited
+    queue <int> q;
+    q.push(s);
+    visited[s] = true;
+    parent[s] = -1;
+ 
+    // Standard BFS Loop
+    while (!q.empty())
+    {
+        int u = q.front();
+        q.pop();
+ 
+        for (int v=0; v<n; v++)
+        {
+            if (visited[v]==false && rg[u][v] > 0)
+            {
+                q.push(v);
+                parent[v] = u;
+                visited[v] = true;
+            }
+        }
+    }
+ 
+    // If we reached sink in BFS starting from source, then return
+    // true, else false
+    return (visited[t] == true);
+}
+int flow(int s1,int s2,int t1,int t2)
+{
+    
+ 
+    memset(rg,0,sizeof(rg));
+    for (int u = 0; u < n; u++)
+        for (int v = 0; v < n; v++)
+             rg[u][v] = g[u][v];
+ 
+     // This array is filled by BFS and to store path
+ 
+    int max_flow = 0;  // There is no flow initially
+    S=100;
+    T=101;
+    n=n+201;
+   
+    rg[S][s1]=2*an_;
+    
+    rg[S][s2]=2*bn_;
+    
+    rg[t1][T]=2*an_;
+    rg[t2][T]=2*bn_;
+ 
+    // Augment the flow while tere is path from source to sink
+    while (bfs( S, T))
+    {
+        // Find minimum residual capacity of the edhes along the
+        // path filled by BFS. Or we can say find the maximum flow
+        // through the path found.
+       int  path_flow = infinite;
+        for (int v=T; v!=S; v=parent[v])
+        {
+           int  u = parent[v];
+            path_flow = min(path_flow, rg[u][v]);
+        }
+ 
+        // update residual capacities of the edges and reverse edges
+        // along the path
+        for (int v=T; v != S; v=parent[v])
+        {
+           int  u = parent[v];
+            rg[u][v] -= path_flow;
+            rg[v][u] += path_flow;
+        }
+ 
+        // Add path flow to overall flow
+        max_flow += path_flow;
+    }
+      n=n-201;
+ 
+    // Return the overall flow
+    return max_flow;
+}
+string OldBridges::isPossible(vector <string> bridges, int a1, int a2, int an, int b1, int b2, int bn) {
+	n=bridges.size();
+	an_=an;
+	bn_=bn;
+	for(int i=0;i<bridges.size();i++){
+		for(int j=0;j<bridges.size();j++){
+			if(bridges[i][j]=='O')// old ,only twice so capacity =2
+			g[i][j]=2;
+			if(bridges[i][j]=='X')// no bridge
+			g[i][j]=0;
+			if(bridges[i][j]=='N')
+			g[i][j]=infinite;// u can walk throuh this bridge infiite number of times so capacity
+		}
+	}
+	int flow1=flow(a1,b1,a2,b2);int flow2=flow(a1,b2,a2,b1);
+	if(flow1>=2*(an+bn) && flow2>=2*(an+bn))
+	return "Yes";
+	else
+	return "No";
+	
+}
